@@ -9,9 +9,7 @@ namespace CodeWars
     internal class Program
     {
         static void Main(string[] args)
-        {
-            #region Who likes it?
-            /*
+        {           
             string[] likes0 = null;
             string[] likes1 = { };
             string[] likes2 = { "Peter" };
@@ -22,9 +20,17 @@ namespace CodeWars
             string[][] WhoLikesItTests = { likes0, likes1, likes2, likes3, likes4, likes5, likes6 };
             for (int WhoLikesItI = 0; WhoLikesItI < WhoLikesItTests.Length; WhoLikesItI++)
             {
-                Console.WriteLine(WhoLikesIt(WhoLikesItTests[WhoLikesItI]));
+                Console.WriteLine($"Who likes it?: {WhoLikesIt(WhoLikesItTests[WhoLikesItI])}");
             }
+            Console.WriteLine($"Is valid walk?: {IsValidWalk(new string[] { "n", "s", "n", "s", "n", "s", "n", "s", "n", "s" }).ToString()}");
+            Console.WriteLine($"Is valid walk?: {IsValidWalk(new string[] { "w", "e", "w", "e", "w", "e", "w", "e", "w", "e", "w", "e" }).ToString()}");
+            Console.WriteLine($"Is valid walk?: {IsValidWalk(new string[] { "w" }).ToString()}");
+            Console.WriteLine($"Is valid walk?: {IsValidWalk(new string[] { "n", "n", "n", "s", "n", "s", "n", "s", "n", "s" }).ToString()}");
 
+            Console.WriteLine($"String ends with?: {StringEndsWith("abc", "bc")}");
+            Console.WriteLine($"String ends with?: {StringEndsWith("abc", "d")}");
+
+            #region Problems
             string WhoLikesIt(string[] name)
             {
                 if (name == null || name.Length == 0)
@@ -50,12 +56,6 @@ namespace CodeWars
 
                 return "no one likes this";
             }
-            */
-            #endregion
-
-            #region String ends with?
-            Console.WriteLine($"String ends with?: {StringEndsWith("abc", "bc")}");
-            Console.WriteLine($"String ends with?: {StringEndsWith("abc", "d")}");
 
             bool StringEndsWith(string str, string ending)
             {
@@ -70,13 +70,51 @@ namespace CodeWars
                 else
                 { return false; }                
             }
+            
+            bool IsValidWalk(string[] walk)
+            {
+                // Longer than 10 minutes
+                if (walk.Length != 10)
+                {
+                    return false;
+                }
+
+                // Do we return to the starting point
+                int vertical = 0;
+                int horizontal = 0;
+                for (int i = 0; i < walk.Length; i++)
+                {
+                    switch(walk[i])
+                    {
+                        case "n":
+                            vertical++;
+                            break;
+                        case "s":
+                            vertical--;
+                            break;
+                        case "e":
+                            horizontal++;
+                            break;
+                        case "w":
+                            horizontal--;
+                            break;
+                    }
+                }
+
+                if (vertical == 0 && horizontal == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
             #endregion
 
             // End of program
             Console.WriteLine("Any key to close");
-            Console.ReadKey();
-
-            
+            Console.ReadKey();            
         }
     }
 }
