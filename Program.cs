@@ -29,8 +29,23 @@ namespace CodeWars
 
             Console.WriteLine($"String ends with?: {StringEndsWith("abc", "bc")}");
             Console.WriteLine($"String ends with?: {StringEndsWith("abc", "d")}");
+            Console.WriteLine($"Is this a triangle?: {IsTriangle(5, 7, 10).ToString()}");
+
 
             #region Problems
+            // Is this a triangle?
+            bool IsTriangle(int a, int b, int c)
+            {
+                if ((a + b > c) && (a + c > b) && (b + c > a))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
             string WhoLikesIt(string[] name)
             {
                 if (name == null || name.Length == 0)
