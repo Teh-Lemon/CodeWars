@@ -9,7 +9,8 @@ namespace CodeWars
     internal class Program
     {
         static void Main(string[] args)
-        {           
+        {
+            Console.WriteLine($"Multiples of 3 or 5: {Solution(10)}");
             string[] likes0 = null;
             string[] likes1 = { };
             string[] likes2 = { "Peter" };
@@ -31,8 +32,22 @@ namespace CodeWars
             Console.WriteLine($"String ends with?: {StringEndsWith("abc", "d")}");
             Console.WriteLine($"Is this a triangle?: {IsTriangle(5, 7, 10).ToString()}");
 
-
             #region Problems
+
+            // Multiples of 3 or 5
+            int Solution(int value)
+            {
+                int total = 0;
+                for (int i = 0; i < value; i++)
+                {
+                    if (i % 3 == 0 || i % 5 == 0)
+                    {
+                        total += i;
+                    }
+                }
+                return total;
+            }
+
             // Is this a triangle?
             bool IsTriangle(int a, int b, int c)
             {
