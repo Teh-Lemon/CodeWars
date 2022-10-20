@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CodeWars
 {
@@ -10,6 +7,11 @@ namespace CodeWars
     {
         static void Main(string[] args)
         {
+            Console.WriteLine($"Bit Counting: {CountBits(0)}");
+            Console.WriteLine($"Bit Counting: {CountBits(4)}");
+            Console.WriteLine($"Bit Counting: {CountBits(7)}");
+            Console.WriteLine($"Bit Counting: {CountBits(9)}");
+            Console.WriteLine($"Bit Counting: {CountBits(10)}");
             Console.WriteLine($"Multiples of 3 or 5: {Solution(10)}");
             string[] likes0 = null;
             string[] likes1 = { };
@@ -33,6 +35,18 @@ namespace CodeWars
             Console.WriteLine($"Is this a triangle?: {IsTriangle(5, 7, 10).ToString()}");
 
             #region Problems
+
+            // Bit Counting
+            int CountBits(int n)
+            {
+                int total = 0;
+                do
+                {
+                    total += n % 2;
+                    n >>= 1; // n /= 2
+                } while (n != 0);    
+                return total;
+            }
 
             // Multiples of 3 or 5
             int Solution(int value)
