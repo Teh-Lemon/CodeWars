@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace CodeWars
 {
@@ -7,6 +9,10 @@ namespace CodeWars
     {
         static void Main(string[] args)
         {
+            string[] a1 = new string[] { "arp", "live", "strong" };
+            string[] a2 = new string[] { "lively", "alive", "harp", "sharp", "armstrong" };
+            Console.WriteLine($"Which are in?: {ArrayToString(inArray(a1, a2))}");
+            /*
             Console.WriteLine($"Bit Counting: {CountBits(0)}");
             Console.WriteLine($"Bit Counting: {CountBits(4)}");
             Console.WriteLine($"Bit Counting: {CountBits(7)}");
@@ -33,8 +39,31 @@ namespace CodeWars
             Console.WriteLine($"String ends with?: {StringEndsWith("abc", "bc")}");
             Console.WriteLine($"String ends with?: {StringEndsWith("abc", "d")}");
             Console.WriteLine($"Is this a triangle?: {IsTriangle(5, 7, 10).ToString()}");
+            */
 
             #region Problems
+
+            // Which are in?
+            string[] inArray(string[] array1, string[] array2)
+            {
+                string txt = string.Join(null, array2);
+                List<string> result = new List<string>();
+
+                foreach (string s in array1)
+                {
+                    if (txt.Contains(s))
+                    {
+                        result.Add(s);
+                    }
+                }
+                result.Sort();
+
+                return result.ToArray();
+            }
+            string ArrayToString(String[] arr)
+            {
+                return $"[{String.Join(" ", arr)}]";
+            }
 
             // Bit Counting
             int CountBits(int n)
